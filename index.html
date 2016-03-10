@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>WQ Data Inventory</title>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
+  <style>
+
+    body {
+      background:#404040;
+      color:#f8f8f8;
+      font:500 20px/26px 'Helvetica Neue', Helvetica, Arial, Sans-serif;
+      margin:0;
+      padding:0;
+      -webkit-font-smoothing:antialiased;
+      }
+    /**
+     * The page is split between map and sidebar - the sidebar gets 1/3, map
+     * gets 2/3 of the page. You can adjust this to your personal liking.
+     */
+    .sidebar {
+      width:33.3333%;
+      }
+    .map {
+      border-left:1px solid #fff;
+      position:absolute;
+      left:33.3333%;
+      width:66.6666%;
+      top:0;
+      bottom:0;
+    }
+    .pad2 {
+      padding:20px;
+      -webkit-box-sizing:border-box;
+         -moz-box-sizing:border-box;
+             box-sizing:border-box;
+    }
+	
+  </style>
+</head>
+<body>
+
+  // Add a filter menu & style.
+  <style>
+  .filter-ui {
+    background:#fff;
+    position:absolute;
+    bottom:60px;
+    left:10px;
+    z-index:100;
+    padding:10px;
+    border-radius:3px;
+    }
+  </style>
+  
+  // nav id adds filter to map per style above 
+  <nav id='filters' class='filter-ui'></nav>
+  <div id='map-one' class='map pad2'> </div>
+  <script>
+  L.mapbox.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g';
+  var map = L.mapbox.map('map-one', 'skaisericprb.p7k0175l', {zoomControl: false }).setView([39.232, -77.974], 8);
+  
+  new L.Control.Zoom({ position: 'topleft' }).addTo(map);
+  
+  var waterQuality = L.mapbox.featureLayer('skaisericprb.p80po25l').addTo(map);
+  var ddoe = L.mapbox.featureLayer('skaisericprb.p82g602a').addTo(map);
+  var usgs = L.mapbox.featureLayer('skaisericprb.p82mk8ko').addTo(map);
+  
+
+  </script>
+</body>
+</html>
