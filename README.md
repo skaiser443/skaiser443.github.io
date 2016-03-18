@@ -1,2 +1,2 @@
 # WQ-Data-Inventory
-Testing push/pull
+Project to enhance and extend the functionality of the Water Quality Data Inventory web map application.
