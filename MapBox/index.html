@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <meta charset=utf-8 />
+  <title>Potomac River Watershed | Mapbox</title>
+  <link rel='shortcut icon' href='path/to/favicon.ico' type='image/x-icon' />
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.1/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
+</head>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 300px;
+  width: 100%;
+}
+
+#sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background: white;
+}
+
+.check-all-containter {
+  width: 100%;
+}
+
+#check-all-agencies,
+#check-all-subregions {
+  position: relative;
+  left: 20%;
+}
+</style>
+
+<body>
+  <div id="map"></div>
+  <div id="sidebar">
+    <div class='pill col12'>
+      <a href='#' class='button space-bottom2 fill-teal active col6' id="agency-tab">Agency</a>
+      <a href='#' class='button space-bottom2 fill-teal col6' id="subregion-tab">Subregion</a>
+    </div>
+    <div class='checkbox-pill col12 pad1' id='agencies'>
+    </div>
+    <div class='checkbox-pill co12 pad1 hidden' id='subregions'>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.js">
+  test
+  </script>
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoibW9sbHltZXJwIiwiYSI6ImNpbGI2aGE3azBpdG51Nmx4YzdqNmhtbGMifQ.-PCIOL5zh3ngczXGmIEl2Q';
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mollymerp/cilg296vq00579pkv7pny5acs',
+    center: [-78.4478759765625, 39.11727568585595], // starting zoom
+    maxBounds: [
+      [-81.309814453125, 41.40153558289846],
+      [-72.57568359375, 35.8356283888737]
+    ]
+  });
+
+
+
+  // // build agency filter options
+  var agencies = ['DDOE', 'MD DNR', 'ACCD', 'MBSS', 'RI', 'CBP', 'WQP', 'Arlington County, VA', 'COR', 'NPS', 'FOAC', 'NOAA', 'WV DEP', 'USGS', 'VA DEQ', 'FOSC'];
+  var agency_container = document.getElementById('agencies');
+
+  // // build subregion filter options
+  var subregions = ['Conococheague-Opequon', 'Monocacy', 'Cacapon-Town', 'North Branch Potomac', 'Middle Potomac-Catoctin', 'South Branch Potomac', 'Shenandoah', 'Middle Potomac-Anacostia-Occoquan', 'North Fork Shenandoah', 'South Fork Shenandoah', 'Lower Potomac'];
+  var subregions_container = document.getElementById('subregions');
+
+  // create checkboxes in the sidebar to allow user to filter by subregion and agency
+  _.forEach([{
+    collection: agencies,
+    container: 'agencies',
+    class: 'agency'
+  }, {
+    collection: subregions,
+    container: 'subregions',
+    class: 'subregion'
+  }], function(category) {
+    var container = document.getElementById(category.container);
+    _.forEach(category.collection, function(item) {
+      var item_str = item.split(' ').join('_');
+      container.innerHTML += `<input class=${category.class} type='checkbox' id=${item_str} checked='checked'>
+      <label for=${item_str} class='button space-bottom1 icon check quiet'>${item}</label>`
+    })
+  })
+
+  // add functionality to tabs -- each one hides the other when it is selected
+  var agency_tab = document.getElementById('agency-tab');
+  var subregion_tab = document.getElementById('subregion-tab');
+  agency_tab.addEventListener('click', function(e) {
+    if (agency_container.classList.contains('hidden')) {
+      subregions_container.classList.toggle('hidden');
+      agency_container.classList.toggle('hidden');
+    }
+  });
+
+  subregion_tab.addEventListener('click', function(e) {
+    if (subregions_container.classList.contains('hidden')) {
+      subregions_container.classList.toggle('hidden');
+      agency_container.classList.toggle('hidden');
+    }
+  });
+
+  // station popup template - uses lodash.template()
+  var station_template = _.template("<% if (station.Station_id) { %><p><strong>Station ID: </strong><%= station.Station_id %></p><% } %><% if (station.Contact_Na != 'N/A') { %><p><strong>Contact Name: </strong><%= station.Contact_Na %></p><% } %><% if (station.Contact_Ph != 'N/A') { %><p><strong>Contact Phone: </strong><%= station.Contact_Ph %></p><% } %><% if (station.Contact_Em != 'N/A') { %><p><strong>Contact Email: </strong><a href='mailto:<%= station.Contact_Em %>'><%= station.Contact_Em %></a></p><% } %><% if (station.Program_we != 'N/A') { %><p><strong>Program Website: </strong><a href = <%= station.Program_we %> >Click Here </a></p><% } %>", {
+    variable: 'station'
+  })
+
+  // wait for style to load before modifying the map
+  map.on('style.load', function() {
+    // initialize data filter
+    map.setFilter('wq-sites', ['all', ['in', 'Source'].concat(agencies), ['in', 'subregion'].concat(subregions)]);
+    // add event listeners to all checkboxes
+    _.forEach(['agency', 'subregion'], function(category) {
+      setEventListeners(category);
+    })
+
+    // mouse hover interactions
+    map.on('mousemove', function(e) {
+      huc_popup(e.point);
+      station_info_popup(e.point);
+    })
+
+    // click to zoom to a specific subregion
+    map.on('click', function(e) {
+      if (map.getZoom() < 8) {
+        zoom_to_subregion(e.point)
+      }
+    })
+
+  })
+
+  // set event listeners on the check boxes
+  // map#setFilter is used to filter the shown wq-sites
+  // for more info see here: https://www.mapbox.com/mapbox-gl-js/api/#Map.setFilter
+  // and here: https://www.mapbox.com/mapbox-gl-style-spec/#types-filter
+  function setEventListeners(type) {
+    var inputs = document.querySelectorAll("input." + type);
+
+    _.forEach(inputs, function(box) {
+      box.addEventListener('click', function() {
+        var filterIndex = type === 'agency' ? 1 : 2;
+        var filter = map.getFilter('wq-sites');
+        var currentFilter = filter[filterIndex];
+
+        var id = box.id.split('_').join(' ');
+        var newFilter;
+        if (box.hasAttribute('checked')) {
+          box.removeAttribute('checked');
+
+          // remove unchecked item from the current filter
+          newFilter = _.filter(currentFilter, function(d) {
+            return d !== id;
+          });
+        } else {
+          box.setAttribute('checked', 'checked');
+
+          // add checked item to the current filter
+          newFilter = currentFilter.concat([id])
+        }
+        // replace old filter with the newly updated filter
+        filter[filterIndex] = newFilter;
+        map.setFilter('wq-sites', filter);
+
+      })
+    })
+  }
+
+  function huc_popup(point) {
+    if (map.getZoom() < 8.5) {
+      removeAllTooltips();
+      map.featuresAt(point, {
+        layer: 'huc8',
+        includeGeometry: true
+      }, function(err, features) {
+        if (features.length > 0) {
+          var centroid = turf.centroid(features[0]).geometry.coordinates;
+          var ttip = new mapboxgl.Popup()
+            .setLngLat(centroid)
+            .setHTML("<p>" + features[0].properties.HUC_NAME + "</p>")
+            .addTo(map);
+        }
+      })
+    }
+  }
+
+  function station_info_popup(point) {
+    if (map.getZoom() > 8.5) {
+      map.featuresAt(point, {
+        layer: 'wq-sites',
+        radius: 10,
+        includeGeometry: true
+      }, function(err, features) {
+        removeAllTooltips();
+        if (features.length > 0) {
+          var ttip = new mapboxgl.Popup()
+            .setLngLat(features[0].geometry.coordinates)
+            .setHTML(station_template(features[0].properties))
+            .addTo(map);
+        }
+      })
+    }
+  }
+
+  function zoom_to_subregion(point) {
+    removeAllTooltips();
+    map.featuresAt(point, {
+      layer: 'huc8',
+      includeGeometry: true
+    }, function(err, features) {
+      if (features.length > 0) {
+        var bounds = mapboxgl.LngLatBounds.convert(turf.extent(features[0]));
+        map.fitBounds(bounds);
+      }
+    })
+  }
+
+  function removeAllTooltips() {
+    var oldTtips = document.getElementsByClassName('mapboxgl-popup');
+    if (oldTtips.length > 0) {
+      _.forEach(oldTtips, function(ttip) {
+        ttip ? ttip.remove() : null;
+      })
+    }
+  }
+  </script>
+</body>
+
+</html>
