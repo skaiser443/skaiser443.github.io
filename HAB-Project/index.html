@@ -1,0 +1,158 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>HAB Sites</title>
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 300px;
+  width: 100%;
+}
+
+#sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background: white;
+}
+
+.check-all-containter {
+  width: 100%;
+}
+
+#menu {
+  background: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  border-radius: 3px;
+  width: 120px;
+  border: 1px solid rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+}
+
+#menu a {
+  font-size: 13px;
+  color: #404040;
+  display: block;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+#menu a:last-child {
+  border: none;
+}
+
+#menu a:hover {
+  background-color: #f8f8f8;
+  color: #404040;
+}
+
+#menu a.active {
+  background-color: #3887be;
+  color: #ffffff;
+}
+
+#menu a.active:hover {
+  background: #3074a4;
+}
+
+#check-all-agencies,
+#check-all-subregions {
+  position: relative;
+  left: 20%;
+}
+</style>
+
+<body>
+  <nav id = "menu"></nav>
+  <div id = "map"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.js">
+  test
+  </script>
+  
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g'
+  var map = new mapboxgl.Map({
+    container: 'map',
+	style: 'mapbox://styles/skaisericprb/cim6j0i0e00mu9jm0vuivuzbl',
+	center: [-78.4478759765625, 39.11727568585595],
+	maxBounds: [
+	  [-81.309814453125, 41.40153558289846],
+      [-72.57568359375, 35.8356283888737]
+    ]
+  });
+
+  map.on('style.load', function() {
+    map.addSource('hab', {
+      type: 'vector',
+      url: 'mapbox://skaisericprb.d080dpvu'
+    });
+    map.addLayer({
+      'id': 'hab',
+      'type': 'circle',
+      'source': 'hab',
+      'paint': {
+	    'circle-radius': 6,
+		'circle-color': 'rgba(55,148,179,1)'
+	  },
+	  'source-layer': 'hab'
+    });
+  });
+	
+  addLayer('HAB', 'hab');
+  
+  function addLayer(name, id) {
+    var link = document.createElement('a');
+	link.href = '#';
+	link.className = 'active';
+	link.textContent = name;
+	
+	link.onclick = function (e) {
+	  e.preventDefault();
+	  e.stopPropagation();
+	  
+	  var visibility = map.getLayoutProperty(id, 'visibility');
+	  
+	  if (visibility === 'visible') {
+	    map.setLayoutProperty(id, 'visibility', 'none');
+		this.className = '';
+	  } else {
+	    this.className = 'active';
+		map.setLayoutProperty(id, 'visibility', 'visible');
+	  }
+	};
+	
+	var layers = document.getElementById('menu');
+	layers.appendChild(link);
+	
+  }
+  
+  var station_template = _.template("<% if (station.Station_ID) { %><p><strong>Station ID: </strong><%= station.Station_ID %></p><% } %>", {
+    variable: 'station'
+  })
+  
+  </script>
+	
+</body>
+
+</html>
