@@ -83,12 +83,19 @@ body {
 </style>
 
 <body>
+<style>
+  .mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif; 
+  }
+  
+  .marker-title {
+    font-weight: 700;
+  }
+</style>
+  
   <nav id = "menu"></nav>
   <div id = "map"></div>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.js">
-  test
-  </script>
   
   <script>
   mapboxgl.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g'
@@ -121,6 +128,26 @@ body {
 	
   addLayer('HAB', 'hab');
   
+  map.on('click', function (e) {
+    var circle = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
+	
+	if (!features.length) {
+	  return;  
+    }
+	
+	var circle = circles[0];
+	
+	var popup = new mapboxgl.Popup()
+	  .setLngLat(features.geometry.coordinates)
+	  .setHTML(features.properties.Station_id)
+	  .addTo(map);
+  });
+  
+  map.on('mousemove', function (e) {
+    var circles = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
+	map.getCanvas().style.cursor (features.length) ? 'pointer' : '';
+  });
+  
   function addLayer(name, id) {
     var link = document.createElement('a');
 	link.href = '#';
@@ -145,11 +172,9 @@ body {
 	var layers = document.getElementById('menu');
 	layers.appendChild(link);
 	
-  }
+  };
   
-  var station_template = _.template("<% if (station.Station_ID) { %><p><strong>Station ID: </strong><%= station.Station_ID %></p><% } %>", {
-    variable: 'station'
-  })
+
   
   </script>
 	
