@@ -3,8 +3,8 @@
   <meta charset=utf-8 />
   <title>HAB Sites</title>
   <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.1/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.14.1/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <style>
@@ -26,6 +26,14 @@ body {
   top: 0;
   left: 0;
   width: 300px;
+  background: white;
+}
+
+#text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 280px;
   background: white;
 }
 
@@ -96,6 +104,16 @@ body {
   
   <nav id = "menu"></nav>
   <div id = "map"></div>
+  <div id = "sidebar">
+     <div id = "text">
+      <div class = "menu">
+	  <h1> HAB Monitoring Locations </h1>
+	  <p>This map displays water quality monitoring locations where cynotoxins are being monitored in the Potomac Basin.</p>
+      <p>Cynotoxins are also known as harmful algal blooms (HAB) and can be harmful to the environment, animals, and human health.
+	     Under favorable conditions, algal blooms release secondary toxins which are harmful if ingested or from extended exposure.</p>
+      <p>Hover over individual monitoring locations for additional information.</p>
+      <p>The complete dataset can be downloaded as an <href>link<a>Excel Spreadsheet</a></href></p>	
+  
   
   <script>
   mapboxgl.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g'
@@ -112,10 +130,11 @@ body {
   map.on('style.load', function() {
     map.addSource('hab', {
       type: 'vector',
-      url: 'mapbox://skaisericprb.d080dpvu'
+      url: 'mapbox://skaisericprb.4stgs9bu'
     });
     map.addLayer({
       'id': 'hab',
+	  'interactive': true,
       'type': 'circle',
       'source': 'hab',
       'paint': {
@@ -129,23 +148,23 @@ body {
   addLayer('HAB', 'hab');
   
   map.on('click', function (e) {
-    var circle = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
+    var features = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
 	
 	if (!features.length) {
 	  return;  
     }
 	
-	var circle = circles[0];
+	var feature = features[0];
 	
 	var popup = new mapboxgl.Popup()
-	  .setLngLat(features.geometry.coordinates)
-	  .setHTML(features.properties.Station_id)
+	  .setLngLat(feature.geometry.coordinates)
+	  .setHTML(feature.properties.Source)
 	  .addTo(map);
   });
   
   map.on('mousemove', function (e) {
-    var circles = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
-	map.getCanvas().style.cursor (features.length) ? 'pointer' : '';
+    var features = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
+	map.getCanvas().style.cursor(features.length) ? 'pointer' : '';
   });
   
   function addLayer(name, id) {
