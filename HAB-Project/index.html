@@ -108,10 +108,11 @@ body {
      <div id = "text">
       <div class = "menu">
 	  <h1> HAB Monitoring Locations </h1>
-	  <p>This map displays water quality monitoring locations where cynotoxins are being monitored in the Potomac Basin.</p>
-      <p>Cynotoxins are also known as harmful algal blooms (HAB) and can be harmful to the environment, animals, and human health.
-	     Under favorable conditions, algal blooms release secondary toxins which are harmful if ingested or from extended exposure.</p>
-      <p>Hover over individual monitoring locations for additional information.</p>
+	  <p>This map displays locations in the Potomac basin where cynotoxins are being monitored.</p>
+      <p>Cynotoxins, also known as harmful algal blooms (HAB), can be harmful to the environment, animals, and human health.
+	     Under favorable conditions, algal blooms release secondary toxins which effect the human nervous system, liver and skin. Humans are exposed
+		 either by direct contact during recreational activities or ingesting contaminated drinking water.</p>
+      <p>Hover over individual monitoring locations for additional information about each monitoring location.</p>
       <p>The complete dataset can be downloaded as an <href>link<a>Excel Spreadsheet</a></href></p>	
   
   
@@ -126,11 +127,11 @@ body {
       [-72.57568359375, 35.8356283888737]
     ]
   });
-
+  
   map.on('style.load', function() {
     map.addSource('hab', {
       type: 'vector',
-      url: 'mapbox://skaisericprb.4stgs9bu'
+      url: 'mapbox://skaisericprb.22c8f84o'
     });
     map.addLayer({
       'id': 'hab',
