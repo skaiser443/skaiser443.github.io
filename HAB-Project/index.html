@@ -100,21 +100,47 @@ body {
   .marker-title {
     font-weight: 700;
   }
+  
+  .legend label,
+  .legend span {
+    display: block;
+	float: left;
+	height: 15px;
+	width: 20%;
+	text-align: center;
+	font-size: 9px;
+	color: #808080
+	}
+	
 </style>
   
+  <div id = "legend" style = 'display: none;'>
+    <strong>HAB Monitoring Locations</strong>
+	<nav class = 'legend clearfix'>
+	  <span style = 'background: #F1EEF6;'></span>
+	  <span style = 'background: #BDC9E1;'></span>
+	  <label>Single Event</label>
+	  <label>Continuous Monitoring</label>
+  </div>
   <nav id = "menu"></nav>
   <div id = "map"></div>
   <div id = "sidebar">
      <div id = "text">
       <div class = "menu">
 	  <h1> HAB Monitoring Locations </h1>
-	  <p>This map displays locations in the Potomac basin where cynotoxins are being monitored.</p>
-      <p>Cynotoxins, also known as harmful algal blooms (HAB), can be harmful to the environment, animals, and human health.
-	     Under favorable conditions, algal blooms release secondary toxins which effect the human nervous system, liver and skin. Humans are exposed
-		 either by direct contact during recreational activities or ingesting contaminated drinking water.</p>
-      <p>Hover over individual monitoring locations for additional information about each monitoring location.</p>
-      <p>The complete dataset can be downloaded as an <href>link<a>Excel Spreadsheet</a></href></p>	
-  
+	  <p>Cyanobacteria, also known as Harmful Algal Blooms (HABs), are overgrowths of algae in waterbodies. 
+	     Under favorable conditions, these algae can release toxins that are harmful to the environment and 
+		 living creatures, including human beings. They are also responsible for creating dead zones in waterbodies, 
+		 which can have negative impacts on aquatic life and environment. As algal toxins have human health implications, 
+		 they need to be removed from the drinking water. This in turn can raise treatment costs. There are many factors 
+		 that contribute to the growth of HABs. While HABs occur naturally in waters, they are exacerbated by overfeeding 
+		 of nutrients (Nitrogen and phosphorus) resulting from human activities. Climate change is expected to bring about 
+		 warmer temperatures. This can add to the problem. The main possible avenues for human exposure to HABs is either 
+		 through direct contact during recreational activities or by ingestion of contaminated drinking water.</p>
+	  <p>This map displays locations in the Potomac basin where Harmful Algal Blooms (HAB) are being monitored. Some of these 
+	     locations are long term monitoring sites while others are response based. To obtain more information, please place 
+		 the mouse over the individual monitoring locations. The complete dataset can also be downloaded as an <a href = "link">Excel Spreadsheet</a>.</p>	
+      <p><small>Data provided by Maryland Department of Natural Resources, Maryland Department of Environment, and Virginia Department of Environmental Quality</small></p>
   
   <script>
   mapboxgl.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g'
@@ -127,7 +153,7 @@ body {
       [-72.57568359375, 35.8356283888737]
     ]
   });
-  
+
   map.on('style.load', function() {
     map.addSource('hab', {
       type: 'vector',
@@ -194,7 +220,7 @@ body {
 	
   };
   
-
+ 
   
   </script>
 	
