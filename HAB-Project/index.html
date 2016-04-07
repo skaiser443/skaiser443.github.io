@@ -29,12 +29,27 @@ body {
   background: white;
 }
 
-#text {
+#sidebar-logo {
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 280px;
-  background: white;
+  background: transparent;
+}
+
+#text {
+  position: absolute;
+  top: 125px;
+  left: 10px;
+  width: 270px;
+  background: transparent;
+}
+
+#footer {
+  position: absolute;
+  top: 100%;
+  bottom: 10px;
+  width: 270px;
+  background: transparent;
 }
 
 .check-all-containter {
@@ -125,22 +140,33 @@ body {
   <nav id = "menu"></nav>
   <div id = "map"></div>
   <div id = "sidebar">
-     <div id = "text">
+    <div id = "sidebar-logo">
+	  <img src = "Logo_PRBDWSPP1.bmp" alt = "logo image" style = "width: 75px; height: 125px;"></img>
+    </div>	  
+    <div id = "text">
       <div class = "menu">
 	  <h1> HAB Monitoring Locations </h1>
-	  <p>Cyanobacteria, also known as Harmful Algal Blooms (HABs), are overgrowths of algae in waterbodies. 
+	  <p style = "font-size:12.5;">Cyanobacteria, also known as Harmful Algal Blooms (HABs), are overgrowths of algae in waterbodies. 
 	     Under favorable conditions, these algae can release toxins that are harmful to the environment and 
-		 living creatures, including human beings. They are also responsible for creating dead zones in waterbodies, 
-		 which can have negative impacts on aquatic life and environment. As algal toxins have human health implications, 
-		 they need to be removed from the drinking water. This in turn can raise treatment costs. There are many factors 
-		 that contribute to the growth of HABs. While HABs occur naturally in waters, they are exacerbated by overfeeding 
-		 of nutrients (Nitrogen and phosphorus) resulting from human activities. Climate change is expected to bring about 
-		 warmer temperatures. This can add to the problem. The main possible avenues for human exposure to HABs is either 
-		 through direct contact during recreational activities or by ingestion of contaminated drinking water.</p>
-	  <p>This map displays locations in the Potomac basin where Harmful Algal Blooms (HAB) are being monitored. Some of these 
+	     living creatures, including human beings. They are also responsible for creating dead zones in waterbodies, 
+	     which can have negative impacts on aquatic life and environment. As algal toxins have human health implications, 
+         they need to be removed from the drinking water. This in turn can raise treatment costs. There are many factors 
+	     that contribute to the growth of HABs. While HABs occur naturally in waters, they are exacerbated by overfeeding 
+	     of nutrients (Nitrogen and phosphorus) resulting from human activities. Climate change is expected to bring about 
+	     warmer temperatures. This can add to the problem. The main possible avenues for human exposure to HABs is either 
+	     through direct contact during recreational activities or by ingestion of contaminated drinking water.</p>
+	  <p style = "font-size:12.5;">This map displays locations in the Potomac basin where Harmful Algal Blooms (HAB) are being monitored. Some of these 
 	     locations are long term monitoring sites while others are response based. To obtain more information, please place 
-		 the mouse over the individual monitoring locations. The complete dataset can also be downloaded as an <a href = "link">Excel Spreadsheet</a>.</p>	
-      <p><small>Data provided by Maryland Department of Natural Resources, Maryland Department of Environment, and Virginia Department of Environmental Quality</small></p>
+	     the mouse over the individual monitoring locations. The complete dataset can also be downloaded as an <a href = "\HAB\CynotoxinMonitoring.xlsx">Excel Spreadsheet</a>.</p>	
+    </div>
+    <div id = "footer">
+	  <p style = "font-size:10.5;">Data provided by Maryland Department of Natural Resources, Maryland Department of Environment, and Virginia Department of Environmental Quality</p>
+    </div>
+  </div>	
+  
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.8.2/lodash.min.js">
+    test
+  </script>
   
   <script>
   mapboxgl.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g'
@@ -170,31 +196,15 @@ body {
 	  },
 	  'source-layer': 'hab'
     });
-  });
+    map.on('click', function (e) {
+      station_info_popup(e.point);
+	}); 	
 	
+  });
+ 	
   addLayer('HAB', 'hab');
   
-  map.on('click', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
-	
-	if (!features.length) {
-	  return;  
-    }
-	
-	var feature = features[0];
-	
-	var popup = new mapboxgl.Popup()
-	  .setLngLat(feature.geometry.coordinates)
-	  .setHTML(feature.properties.Source)
-	  .addTo(map);
-  });
-  
-  map.on('mousemove', function (e) {
-    var features = map.queryRenderedFeatures(e.point, { layers: ['hab'] });
-	map.getCanvas().style.cursor(features.length) ? 'pointer' : '';
-  });
-  
-  function addLayer(name, id) {
+   function addLayer(name, id) {
     var link = document.createElement('a');
 	link.href = '#';
 	link.className = 'active';
@@ -219,7 +229,23 @@ body {
 	layers.appendChild(link);
 	
   };
-  
+ 
+  function station_info_popup(point) {
+    map.featuresAt (point, {
+	  layer: 'hab',
+	  radius: 10,
+	  includeGeometry: true,
+	}, function(err, features) {
+	  removeAllTooltips();
+	  if (features.length > 0) {
+	    var ttip = new mapboxgl.Popup()
+		  .setLngLat(features[0].geometry.coordinates)
+		  .setHTML(station_template(features[0].properties))
+		  .addTo(map);
+		}
+	  })
+	};
+ 
  
   
   </script>
