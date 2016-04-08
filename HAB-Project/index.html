@@ -107,14 +107,6 @@ body {
 
 <body>
 <style>
-  .mapboxgl-popup {
-    max-width: 400px;
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif; 
-  }
-  
-  .marker-title {
-    font-weight: 700;
-  }
   
   .legend label,
   .legend span {
@@ -183,6 +175,11 @@ body {
 
   });
 
+  //lodash template
+  var station_template_string = "<% if (station.Source) { %><p><strong>Agency:</strong><%= station.Source %></p><% } %><% if (station.Station_ID) { %><p><strong>Station ID</strong><%= station.Station_ID %></p><% } %>";  
+
+  var station_template = _.template(station_template_string, {variable: 'station'});
+  
   map.on('style.load', function() {
     map.on('click', function (e) {
       var features = map.queryRenderedFeatures(e.point, {
@@ -193,11 +190,11 @@ body {
 	    return;
 	  }
 	  
-	  var features = features[0];
+    console.log(features);
 	  
-	  var popup = new mapboxgl.Popup()
-	    .setLngLat(features.geometry.coordinates)
-		.setHTML(features.properties.Source)
+	  var ttip = new mapboxgl.Popup()
+	    .setLngLat(features[0].geometry.coordinates)
+		.setHTML(station_template(features[0].properties))
 		.addTo(map);
 	}); 	
 	
