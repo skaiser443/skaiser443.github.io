@@ -1,0 +1,242 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>HAB Sites</title>
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 300px;
+  width: 81.5%;
+}
+
+#sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background: white;
+}
+
+#sidebar-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: transparent;
+}
+
+#text {
+  position: absolute;
+  top: 125px;
+  left: 10px;
+  width: 270px;
+  background: transparent;
+}
+
+#footer {
+  position: absolute;
+  top: 100%;
+  bottom: 10px;
+  width: 270px;
+  background: transparent;
+}
+
+.check-all-containter {
+  width: 100%;
+}
+
+#menu {
+  background: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  border-radius: 3px;
+  width: 120px;
+  border: 1px solid rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+}
+
+#menu a {
+  font-size: 13px;
+  color: #404040;
+  display: block;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+#menu a:last-child {
+  border: none;
+}
+
+#menu a:hover {
+  background-color: #f8f8f8;
+  color: #404040;
+}
+
+#menu a.active {
+  background-color: #3887be;
+  color: #ffffff;
+}
+
+#menu a.active:hover {
+  background: #3074a4;
+}
+
+#check-all-agencies,
+#check-all-subregions {
+  position: relative;
+  left: 20%;
+}
+</style>
+
+<body>
+<style>
+  
+  .legend label,
+  .legend span {
+    display: block;
+	float: left;
+	height: 15px;
+	width: 20%;
+	text-align: center;
+	font-size: 9px;
+	color: #808080
+	}
+	
+</style>
+  
+  <div id = "legend" style = 'display: none;'>
+    <strong>HAB Monitoring Locations</strong>
+	<nav class = 'legend clearfix'>
+	  <span style = 'background: #F1EEF6;'></span>
+	  <span style = 'background: #BDC9E1;'></span>
+	  <label>Single Event</label>
+	  <label>Continuous Monitoring</label>
+  </div>
+  <nav id = "menu"></nav>
+  <div id = "map"></div>
+  <div id = "sidebar">
+    <div id = "sidebar-logo">
+	  <img src = "Logo_PRBDWSPP1.bmp" alt = "logo image" style = "width: 75px; height: 125px;"></img>
+    </div>	  
+    <div id = "text">
+      <div class = "menu">
+	  <h1> HAB Monitoring Locations </h1>
+	  <p style = "font-size:12.5;">Cyanobacteria, also known as Harmful Algal Blooms (HABs), are overgrowths of algae in waterbodies. 
+	     Under favorable conditions, these algae can release toxins that are harmful to the environment and 
+	     living creatures, including human beings. They are also responsible for creating dead zones in waterbodies, 
+	     which can have negative impacts on aquatic life and environment. As algal toxins have human health implications, 
+         they need to be removed from the drinking water. This in turn can raise treatment costs. There are many factors 
+	     that contribute to the growth of HABs. While HABs occur naturally in waters, they are exacerbated by overfeeding 
+	     of nutrients (Nitrogen and phosphorus) resulting from human activities. Climate change is expected to bring about 
+	     warmer temperatures. This can add to the problem. The main possible avenues for human exposure to HABs is either 
+	     through direct contact during recreational activities or by ingestion of contaminated drinking water.</p>
+	  <p style = "font-size:12.5;">This map displays locations in the Potomac basin where Harmful Algal Blooms (HAB) are being monitored. Some of these 
+	     locations are long term monitoring sites while others are response based. To obtain more information, please place 
+	     the mouse over the individual monitoring locations. The complete dataset can also be downloaded as an <a href = "\HAB\CynotoxinMonitoring.xlsx">Excel Spreadsheet</a>.</p>	
+    </div>
+    <div id = "footer">
+	  <p style = "font-size:10.5;">Data provided by Maryland Department of Natural Resources, Maryland Department of Environment, and Virginia Department of Environmental Quality</p>
+    </div>
+  </div>	
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.9.0/lodash.min.js"></script>
+  
+  <script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g'
+  var map = new mapboxgl.Map({
+	container: 'map',
+	style: 'mapbox://styles/skaisericprb/cim6j0i0e00mu9jm0vuivuzbl',
+	center: [-78.213233, 38.953640],
+	maxBounds: [
+	  [-81.309814453125, 41.40153558289846],
+      [-72.57568359375, 35.8356283888737]
+    ],
+	zoom: 7.6,
+	attributionControl: {
+	  position: 'bottom-right'
+	}
+
+  });
+
+  //lodash template
+  var station_template_string = _.template("<% if (station.Source) { %><p><strong>Agency:</strong><%= station.Source %></p><% }
+  %><% if (station.Station_ID) { %><p><strong>Station ID</strong><%= station.Station_ID %></p><% } %>", {
+    variable: 'station'
+  });  
+  
+  map.on('style.load', function() {
+    map.on('click', function (e) {
+      var features = map.queryRenderedFeatures(e.point, {
+	    layers: ['hab-1', 'hab-2']
+	  });
+	  
+	  if (!features.length) {
+	    return;
+	  }
+	  
+	  var features = features[0];
+	  
+	  var station_template = _.template(station_template_string, {variable: station});
+	    var ttip = new mapboxgl.Popup()
+	      .setLngLat(features[0].geometry.coordinates)
+		  .setHTML(station_template(features[0].properties))
+		  .addTo(map);
+	}); 	
+	
+  });
+ 	
+  addLayer('HAB Event', 'hab-1');
+  addLayer('HAB Continuous', 'hab-2');
+  
+   function addLayer(name, id) {
+    var link = document.createElement('a');
+	link.href = '#';
+	link.className = 'active';
+	link.textContent = name;
+	
+	link.onclick = function (e) {
+	  e.preventDefault();
+	  e.stopPropagation();
+	  
+	  var visibility = map.getLayoutProperty(id, 'visibility');
+	  
+	  if (visibility === 'visible') {
+	    map.setLayoutProperty(id, 'visibility', 'none');
+		this.className = '';
+	  } else {
+	    this.className = 'active';
+		map.setLayoutProperty(id, 'visibility', 'visible');
+	  }
+	};
+	
+	var layers = document.getElementById('menu');
+	layers.appendChild(link);
+	
+  };
+ 
+
+
+ 
+  
+  </script>
+	
+</body>
+
+</html>
