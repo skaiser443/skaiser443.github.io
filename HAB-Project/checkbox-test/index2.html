@@ -1,0 +1,145 @@
+<html>
+<header>
+  <meta charset=utf-8 />
+  <title>Checkbox Test</title>
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
+</header>  
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 300px;
+  width: 81.5%;
+}
+
+#menu {
+  background: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 310px;
+  border-radius: 3px;
+  width: 200px;
+  border: 1px solid rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+}
+
+label.button {
+  text-align:left;
+  }
+.listing-container button {
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  text-align:left;
+  margin:0;
+  font-size:12px;
+  line-height:20px;
+  width:150px;
+  padding:0;
+  height:auto;
+  }
+  .listing-container button:hover {
+    background-color:rgba(0,0,0,0.05);
+    }
+  .listing-container button.listing h4 {
+    font-family:'Open Sans Bold', sans-serif;
+    font-weight:normal;
+    }
+
+input[type='checkbox'] + label {
+  color:#fff;
+  height:50px;
+  line-height:30px;
+  }
+  input[type='checkbox'] + label:before,
+  input[type='checkbox'] + label:after {
+    margin-top:5px;
+    }
+input[type='checkbox']:checked + label,
+input[type='checkbox']:checked + label:hover { color:#fff; }
+input[type='checkbox']:checked + label:hover:before { opacity:0.75; }
+
+.checkbox-pill input[type='checkbox'] + label[for='hab-1'],
+.checkbox-pill input[type='checkbox']:checked + label[for='hab-1'],
+.fill-hab-1     { background-color:#d93a92; }
+.checkbox-pill input[type='checkbox'] + label[for='hab-2'],
+.checkbox-pill input[type='checkbox']:checked + label[for='hab-2'],
+.fill-hab-2   { background-color:#5a4ba2; }
+
+</style>
+
+<body>
+
+
+
+<div id = "map"></div>
+<div id = "menu">
+  <div class='fill-white full-height-container'>
+    <div id='filter-categories' class='checkbox-pill col12 clearfix' >
+      <input type='checkbox' id='hab-1' checked='checked'>
+      <label for='hab-1' class='col6 truncate icon check unround button'>Hab-1</label>
+      <input type='checkbox' id='hab-2' checked='checked'>
+      <label for='hab-2' class='col6 truncate icon check unround button'>Hab-2</label>
+    </div>
+  </div>
+</div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2thaXNlcmljcHJiIiwiYSI6ImNpa2U3cGN1dDAwMnl1cm0yMW94bWNxbDEifQ.pEG_X7fqCAowSN8Xr6rX8g'
+  var map = new mapboxgl.Map({
+	container: 'map',
+	style: 'mapbox://styles/skaisericprb/cim6j0i0e00mu9jm0vuivuzbl',
+	center: [-78.213233, 38.953640],
+	maxBounds: [
+	  [-81.309814453125, 41.40153558289846],
+      [-72.57568359375, 35.8356283888737]
+    ],
+	zoom: 7.6,
+	attributionControl: {
+	  position: 'bottom-right'
+	}
+
+  });
+
+  addLayer('Hab-1', 'hab-1');
+  addLayer('Hab-2', 'hab-2');
+  
+   function addLayer(name, id) {
+    var input = document.createElement('label');
+	  input.type = 'checkbox';
+	  input.checked = true;
+	  input.className = 'button';
+	  input.textContent = name;
+	
+	input.onclick = function (e) {
+	  e.preventDefault();
+	  e.stopPropagation();
+	  
+	  var visibility = map.getLayoutProperty(id, 'visibility');
+	  
+	  if (visibility === 'visible') {
+	    map.setLayoutProperty(id, 'visibility', 'none');
+		this.className = '';
+	  } else {
+	    this.className = 'button';
+		map.setLayoutProperty(id, 'visibility', 'visible');
+	  }
+	};
+	
+	var layers = document.getElementById('menu');
+	layers.appendChild(input);
+
+  };
+
+</script>
+
+</body>
