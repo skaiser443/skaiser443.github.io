@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p.body-text {
+  font-size: 12.5;
+}
+
+p.footer-text {
+  font-size: 10.5;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 300px;
+  width: 81.5%;
+}
+
+#sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background: white;
+}
+
+#sidebar-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: transparent;
+}
+
+#text {
+  position: absolute;
+  top: 125px;
+  left: 10px;
+  width: 270px;
+  background: transparent;
+}
+
+#footer {
+  position: absolute;
+  top: 100%;
+  bottom: 10px;
+  width: 270px;
+  background: transparent;
+}
+
+#hab1 {
+  background: #0eaf46;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 305px;
+  border-radius: 3px;
+  height: 20px;
+  width: 140px;
+  border: 0.25px solid rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+}
+
+#hab2 {
+  background: #bb1616;
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  left: 305px;
+  border-radius: 3px;
+  height: 20px;
+  width: 140px;
+  border: 0.25px solid rgba(0,0,0,0.4);
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+#link-group {
+    font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    position: relative;
+    top: 10px;
+    left: 310px;
+    z-index: 1;
+    border-radius: 3px;
+    max-width: 130px;
+    color: #fff;
+}
+
+#link-group input[type=checkbox]:first-child + label {
+    border-radius: 5px 5px 0 0;
+}
+
+#link-group label:last-child {
+    position: relative;
+	top: 10px;
+	left: 310;
+	border-radius: 0 0 5px 5px;
+    border: none;
+}
+
+#link-group input[type=checkbox] {
+    display: true;
+}
+
+#link-group input[type=checkbox] + label {
+    background-color: #3386c0;
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+#link-group input[type=checkbox] + label {
+    background-color: #3386c0;
+    text-transform: capitalize;
+}
+
+#link-group input[type=checkbox] + label:hover, {color: #fff;}
+#link-group input[type=checkbox]:checked + label {
+    background-color: #4ea0da;
+}
+
+#link-group input[type=checkbox]:checked + label:before {
+  content: '?';
+  margin-right: 5px;
+}
+
+#custom-popup mapboxgl-popup-content-wrapper {
+  padding: 1px;
+  text-align: left;
+}
+
+#custom-popup mapboxgl-popup-content {
+  padding: 10px 10px 15px;
+  margin: 0;
+  line-height: inherit;
+}
+
+#custom-popup mapboxgl-popup-tip-container {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#custom-popup mapboxgl-popup-scrolled {
+  overflow: auto;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
