@@ -127,27 +127,3 @@ p.footer-text {
   content: '?';
   margin-right: 5px;
 }
-
-#custom-popup mapboxgl-popup-content-wrapper {
-  padding: 1px;
-  text-align: left;
-}
-
-#custom-popup mapboxgl-popup-content {
-  padding: 10px 10px 15px;
-  margin: 0;
-  line-height: inherit;
-}
-
-#custom-popup mapboxgl-popup-tip-container {
-  width: 20px;
-  height: 20px;
-  margin: 0 auto;
-  position: relative;
-}
-
-#custom-popup mapboxgl-popup-scrolled {
-  overflow: auto;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
-}
