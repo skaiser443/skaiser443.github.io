@@ -8,7 +8,7 @@ p.body-text {
 }
 
 p.footer-text {
-  font-size: 10.5;
+  font-size: 9.5;
 }
 
 #map {
@@ -58,7 +58,7 @@ p.footer-text {
   left: 305px;
   border-radius: 3px;
   height: 20px;
-  width: 140px;
+  width: 220px;
   border: 0.25px solid rgba(0,0,0,0.4);
   font-family: 'Open Sans', sans-serif;
 }
@@ -71,7 +71,7 @@ p.footer-text {
   left: 305px;
   border-radius: 3px;
   height: 20px;
-  width: 140px;
+  width: 220px;
   border: 0.25px solid rgba(0,0,0,0.4);
   font-family: 'Open Sans', sans-serif;
 }
@@ -85,7 +85,7 @@ p.footer-text {
     left: 310px;
     z-index: 1;
     border-radius: 3px;
-    max-width: 130px;
+    max-width: 220px;
     color: #fff;
 }
 

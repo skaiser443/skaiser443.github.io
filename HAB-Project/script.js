@@ -40,8 +40,8 @@
 	
   });
  	
-  addLayer('HAB Monitoring', 'hab-1');
-  addLayer('HAB Event', 'hab-0');
+  addLayer('HAB Long-Term Monitoring', 'hab-1');
+  addLayer('HAB Response Monitoring', 'hab-0');
   
   function addLayer(name, id) {
     var link = document.createElement('input');
