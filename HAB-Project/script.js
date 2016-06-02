@@ -14,6 +14,8 @@
 	}
 
   });
+  
+  map.addControl(new mapboxgl.Navigation());
 
   //lodash template
   var station_template_string = "<strong><h3>HAB Monitoring Location</h3></strong><% if (station.Source) { %><p><strong>Agency: </strong><%= station.Source %></p><% } %><% if (station.Site_Name) { %><p><strong>Station Name: </strong><%= station.Site_Name %></p><% } %><% if (station.Parameters) { %><p><strong>Parameters: </strong><%= station.Parameters %></p><% } %>";  
