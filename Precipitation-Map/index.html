@@ -4,26 +4,65 @@
   <meta charset=utf-8 />
   <title>Precipitation Monitoring</title>
   <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.19.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.19.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="style.css"/>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v2.0.2/turf.min.js'></script>  
 </header>
 
 <style>
-//add tooltip sytling here
+
 </style>
 
 <body>
   <div id = "map"></div>
   <div id = "sidebar">
-    <p><h2>Potomac River Basin Precipitation Monitoring</h2></p>
+    <p><h2>Potomac Basin Precipitation Monitoring</h2><br>
+	This map displays precipitation totals from the previous day.
+	Cumulative daily values are averaged by Potomac basin sub-watershed and
+	computed by CO-OP's Low Flow Forecast System based on gridded multi-sensor precipitation estimates
+	provided by the Middle Atlantic River Forecast Center.</p>
+	<strong><div id = "time"></div></strong>
     <div id = "tooltip"></div>
-	<p><h4>Rainfall Totals Previous 7 Days:</h4>
-	<img src = "sample_graph.png" alt = "sample graph" style = "width: 250px; height: 150px;"></img>
-	</p>
-  </div>	
+  </div>
+  <div id= "precip-legend">
+    <nav class='legend clearfix'>
+	  <small>Daily Rainfall Totals (inches)</small>
+      <span style='background:#1a9641;'></span>
+      <span style='background:#3fa74b;'></span>
+      <span style='background:#64b956;'></span>
+      <span style='background:#89cb61;'></span>
+      <span style='background:#abdb6f;'></span>
+	  <span style='background:#c3e586;'></span>
+	  <span style='background:#dbef9d;'></span>
+	  <span style='background:#f3f9b4;'></span>
+	  <span style='background:#fef4b3;'></span>
+	  <span style='background:#fede9a;'></span>
+	  <span style='background:#fdc980;'></span>
+	  <span style='background:#fdb367;'></span>
+	  <span style='background:#f59053;'></span>
+	  <span style='background:#eb6840;'></span>
+	  <span style='background:#e1402e;'></span>
+	  <span style='background:#d7191c;'></span>
+      <label>0.0</label>
+	  <label>   </label>
+	  <label>   </label>
+	  <label>   </label>	  
+      <label>1.0</label>
+	  <label>   </label>
+	  <label>   </label>
+	  <label>   </label>	  
+      <label>2.0</label>
+	  <label>   </label>
+	  <label>   </label>
+	  <label>   </label>	  
+      <label>3.0</label>
+	  <label>   </label>
+	  <label>   </label>
+      <label>4.0</label>
+  </div>  
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.9.0/lodash.min.js"></script>
 <script src = 'script.js'></script>
 
 </body>

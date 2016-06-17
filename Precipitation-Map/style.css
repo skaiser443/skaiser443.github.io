@@ -6,6 +6,7 @@ body {
 
 p.body-text {
 	font-size: 12.5;
+	text-align: justify;
 	
 }
 
@@ -26,11 +27,45 @@ p.footer-text {
 #sidebar {
 	position: absolute;
 	top: 15px;
-	bottom: 15px;
-	width: 300px;
+	left: 10px;
+	height: 300px;
+	width: 500px;
 	overflow: auto;
 	background: rgba(255, 255, 255, 0.7);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.10);
 	font-family: "Arial";
-	padding-left: 10px;
-	
+	padding: 10px;
 }
+
+.mapboxgl-popup {
+	max-width: 400px;
+	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.marker-title {
+	font-weight: 700;
+}
+
+.legend {
+    background-color: #fff;
+    border-radius: 3px;
+    bottom: 30px;
+	width: 185px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+}
+
+.legend label,
+.legend span {
+  display: block;
+  float: left;
+  height: 15px;
+  width: 6%;
+  text-align: center;
+  font-size: 9px;
+  color: #808080;
+  }
