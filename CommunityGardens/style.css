@@ -1,0 +1,17 @@
+#map {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0px;
+	width: 100%;
+}
+
+#sidebar {
+	position: absolute;
+	top: 15px;
+	height: 80px;
+	width: 750px;
+	background: rgba(10, 127, 64, 0.7);
+	font-family: "Helvetica";
+	padding-left: 10px;
+}
