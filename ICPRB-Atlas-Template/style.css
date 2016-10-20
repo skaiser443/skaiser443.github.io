@@ -42,10 +42,10 @@
 	top: 0px;
 	height: 180px;
 	width: 100%;
-	background: -webkit-linear-gradient(rgba(14,174,226,0.55), rgba(14,174,226,0)); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(rgba(14,174,226,0.55), rgba(14,174,226,0)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(rgba(14,174,226,0.55), rgba(14,174,226,0)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(rgba(14,174,226,0.55), rgba(14,174,226,0)); /* Standard syntax */	
+	background: -webkit-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* Standard syntax */	
 }
 
 .site-title {
@@ -71,6 +71,34 @@
 	letter-spacing: 1.5px;
 	color: #fff;
 	font: italic 16px/20px 'Vollkorn', serif;
+}
+
+.social-fb {
+	position: relative;
+	float: right;
+	top: -18px;
+	right: 175px;
+}
+
+.social-linkedin {
+	position: relative;
+	float: right;
+	top: -18px;
+	right: 130px;
+}
+
+.social-twitter {
+	position: relative;
+	float: right;
+	top: -15px;
+	right: 85px;
+}
+
+.social-insta {
+	position: relative;
+	float: right;
+	top: -18px;
+	right: 40px;
 }
 
 #logo {
@@ -112,17 +140,6 @@ li a {
 
 li a:hover {
 	text-color: #111;
-}
-
-hr { 
-    position: relative;
-	display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
 }
 
 #sidebar {
@@ -190,6 +207,7 @@ hr {
 	margin-left: 50px;
 	cursor: pointer;
 }
+
 
 
 

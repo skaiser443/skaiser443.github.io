@@ -1,6 +1,6 @@
 <html>
 <header>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <meta charset=utf-8 />
   <title>Potomac River Basin Atlas</title>
   <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
@@ -11,6 +11,8 @@
 </header>
 
 <body>
+<!--DO NOT CHANGE ANYTHING IN THIS FIRST SECTION OF HTML BODY-->
+
   <div class="container">
     <div class="site-header" role="banner">
 	  <img class="banner-image" alt="Great Falls" src="cumminsGreat_Falls_p4a-Large.jpg">
@@ -27,16 +29,26 @@
 	</div>
 	<div class="social">
 	  <div class="social-text">Interstate Commission on the Potomac River Basin</div>
+	  	<a href="https://www.facebook.com/PotomacRiverCommission" target="_blank"><img class="social-fb" alt="Facebook" src="elements/icons/facebook.png" width="15px" height="20px"></a>
+		<a href="https://www.linkedin.com/company-beta/8603011?pathWildcard=8603011" target="_blank"><img class="social-linkedin" alt="LinkedIn" src="elements/icons/linkedin.png" width="20px" height="20px"></a>
+		<a href="https://twitter.com/ICPRB" target="_blank"><img class="social-twitter" alt="Twitter" src="elements/icons/twitter.png" width="15px" height="15px"></a>
+		<a href="https://www.instagram.com/icprb/" target="_blank"><img class="social-insta" alt="Instagram" src="elements/icons/instagram.png" width="20px" height="20px"></a>
 	</div>
   </div>
+
+<!--END FIRST SECTION OF HTML BODY-->
+
+<!--UPDATE ELEMENTS PER NOTES BELOW FOR EACH NEW MAP CREATED-->
   
   <div id="sidebar">
-    <div class="sidebar-title-block">Map Title</div>
-	<div class="sidebar-title-text">Insert map description here</div>
+    <div class="sidebar-title-block">Map Title</div><!--Add title of map here-->
+	<div class="sidebar-title-text">Insert map description here</div><!--Add short description of map here. If no description, delete placeholder text-->
 	<div class="sidebar-text-block">
-	  <div class="sidebar-text">Insert additional descriptive text here. <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br></br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>
+	  <div class="sidebar-text">Insert additional descriptive text here.<!--Insert additional text, if necessary, here. If no additional text is required, delete placehoder text.--> <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br></br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>
 	</div>
   </div>
+
+
   
   <div id="control-group">
     <div class="control-group-text">
@@ -48,9 +60,14 @@
 	</div>
   </div>
   
+<!--END SIDEBAR-->
+
+<!--DO NOT CHANGE ANYTHING BELOW THIS NOTE-->
+  
   <div id="logo">
     <img class="logo" alt="ICPRB Logo" src="logo.png" width="" height="">
   </div>
+ 
   
   <div id="map"></div>
   
