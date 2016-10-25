@@ -1,0 +1,106 @@
+* {
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+[class*="col-"] {
+	float: left;
+	padding: 0;
+	height: 100%;
+}
+
+html {
+	font-family: "Ubuntu", sans-serif;
+}
+
+.header {
+	background-color: #333;
+	color: #ffffff;
+	padding: 15px;
+}
+
+.sidebar{
+	background-color: #F2F2F2;
+	left: 0;
+	height: 100%;
+	overflow: scroll;
+}
+
+.sidebar-title-block {
+	position: relative;
+	display: block;
+	padding: 10px;
+	padding-bottom: 2px;
+	font: 36px/40px 'Vollkorn', serif;
+	color: #333;
+	text-transform: uppercase;
+}
+
+.sidebar-title-text {
+	position: relative;
+	display: block;
+	padding: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font: 14px/18px 'Ubuntu', sans-serif;
+	color: #333;
+	text-align: justify;
+}
+
+.sidebar-text-block {
+	position: relative;
+	display: block;
+	top: 75px;
+    bottom: 0;
+}
+
+.sidebar-text {
+	position: relative;
+	display: block;
+	padding: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font: 14px/18px 'Ubuntu', sans-serif;
+	color: #333;
+	text-align: justify;
+}
+
+.sidebar-control-group {
+	position: relative;
+	display: block;
+    padding-top: 20px;
+}
+
+/* Insert radio style here */
+
+.sidebar-control-group-text {
+	position: relative;
+	display: block;
+	margin-left: 50px;
+	cursor: pointer;
+}
+
+.map {
+	bottom: 0;
+}
+
+
+/* For desktop */
+.col-1 {width: 20%;}
+.col-2 {width: 40%;}
+.col-3 {width: 60%;}
+.col-4 {width: 80%;}
+.col-5 {width: 100%;}
+
+@media only screen and (max-width: 786px) {
+	/* For mobile phones: */
+	[class*="col-"] {
+		width: 100%;
+	}
+}
+

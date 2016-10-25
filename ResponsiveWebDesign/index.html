@@ -1,0 +1,51 @@
+<html>
+<header>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset=utf-8 />
+  <title>Responsive Web Design</title>
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.25.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.25.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.1/mapbox-gl-geocoder.css' type='text/css' />
+  <link rel="stylesheet" href="style.css"/>
+</header>
+
+<body>
+
+  <div class="header">
+  <h1>TEST</h1>
+  </div>
+  
+  <div class="row">
+  
+  <div class="col-1 sidebar">
+      <div class="sidebar-title-block">Map Title</div><!--Add title of map here-->
+	  <div class="sidebar-title-text">Insert map description here</div>
+      <div class="sidebar-control-group">
+        <div class="sidebar-control-group-text">
+          <input type="radio" name="layer" value="layer 1"> Layer 1<br>
+	      <input type="radio" name="layer" value="layer 2"> Layer 2<br>
+	      <input type="radio" name="layer" value="layer 3"> Layer 3<br>
+	      <input type="radio" name="layer" value="layer 4"> Layer 4<br>
+	      <input type="radio" name="layer" value="layer 5"> Layer 5<br>
+	    </div>
+      </div>	  
+	  <div class="sidebar-text-block">
+	    <div class="sidebar-text">Insert additional descriptive text here.<!--Insert additional text, if necessary, here. If no additional text is required, delete placehoder text.--> <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br></br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>	  
+      </div>
+  </div>	  
+  
+  <div id="map" class="col-4 left"></div>
+
+  
+
+  
+  
+  </div>
+
+
+  <script src= 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.1/mapbox-gl-geocoder.js'></script>  
+  <script src= 'script.js'></script>
+
+</body>
+</html>
