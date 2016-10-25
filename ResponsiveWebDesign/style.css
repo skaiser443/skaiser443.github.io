@@ -21,17 +21,17 @@ html {
 .header {
 	color: #ffffff;
 	padding: 0;
-	height: 30%;
+	height: 180px;
 	overflow: hidden;
 	  overflow-x: hidden;
-	  overflow-y: hidden;	
+	  overflow-y: hidden;
 }
 
 .header-overlay {
 	position: absolute;
 	display: block;
 	top: 0px;
-	height: 30%;
+	height: 180px;
 	width: 100%;
 	background: -webkit-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0.05)); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0.05)); /* For Opera 11.1 to 12.0 */
@@ -45,7 +45,7 @@ html {
 	margin-top: 60px;
 	padding: 0;
 	color: #ffffff;
-	font: bold 45px/55px 'Vollkorn', serif;
+	font: bold 48px/58px 'Vollkorn', serif;
 	text-transform: uppercase;
 }
 
@@ -61,6 +61,7 @@ html {
 	left: 0;
 	height: 70%;
 	overflow: scroll;
+	z-index: -1;
 }
 
 .sidebar-title-block {
