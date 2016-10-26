@@ -1,3 +1,244 @@
+* {
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+[class*="col-"] {
+	float: left;
+	padding: 0;
+	height: 100%;
+}
+
+html {
+	font-family: "Ubuntu", sans-serif;
+}
+
+.header {
+	color: #ffffff;
+	padding: 0;
+	height: 180px;
+	overflow: hidden;
+	  overflow-x: hidden;
+	  overflow-y: hidden;
+}
+
+.header-overlay {
+	position: absolute;
+	display: block;
+	top: 0px;
+	height: 180px;
+	width: 100%;
+	overflow: hidden;
+	  overflow-x: hidden;
+	  overflow-y: hidden;
+	background: -webkit-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0.05)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0.05)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0.05)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0.05)); /* Standard syntax */	
+}
+
+.site-title {
+	letter-spacing: 1.5px;
+	margin-left: 175px;
+	margin-top: 60px;
+	padding: 0;
+	color: #ffffff;
+	font: bold 48px/58px 'Vollkorn', serif;
+	text-transform: uppercase;
+}
+
+.logo {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+    max-width: 100%;
+}
+
+.navigation {
+	position: absolute;
+	top: 112px;
+	height: 68px;
+	width: 100%;
+}
+
+
+ul {
+	list-style-type: none;
+	margin-top: 20px;
+	margin-left: 295px;
+	padding: 0;
+	overflow: hidden;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 30px;
+	font: 20px/28px 'Vollkorn', serif;
+	text-decoration: none;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+li a:hover {
+	text-color: #111;
+}
+
+.social {
+	position: absolute;
+	height: 20px;
+	width: 600px;
+	top: 10px;
+	right: 0;	
+}
+
+.social-text {
+	margin-right: 175px;
+	letter-spacing: 1.5px;
+	color: #fff;
+	font: italic 16px/20px 'Vollkorn', serif;
+}
+
+.social-fb {
+	position: relative;
+	float: right;
+	top: -18px;
+	right: 175px;
+}
+
+.social-linkedin {
+	position: relative;
+	float: right;
+	top: -18px;
+	right: 130px;
+}
+
+.social-twitter {
+	position: relative;
+	float: right;
+	top: -15px;
+	right: 85px;
+}
+
+.social-insta {
+	position: relative;
+	float: right;
+	top: -18px;
+	right: 40px;
+}
+
+.sidebar{
+	background-color: #F2F2F2;
+	left: 0;
+	height: 100%;
+	overflow: scroll;
+	z-index: -1;
+}
+
+.sidebar-title-block {
+	position: relative;
+	display: block;
+	padding: 10px;
+	padding-bottom: 2px;
+	font: 36px/40px 'Vollkorn', serif;
+	color: #333;
+	text-transform: uppercase;
+}
+
+.sidebar-title-text {
+	position: relative;
+	display: block;
+	padding: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font: 14px/18px 'Ubuntu', sans-serif;
+	color: #333;
+	text-align: justify;
+}
+
+.sidebar-text-block {
+	position: relative;
+	display: block;
+	top: 75px;
+    bottom: 0;
+}
+
+.sidebar-text {
+	position: relative;
+	display: block;
+	padding-bottom: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font: 14px/18px 'Ubuntu', sans-serif;
+	color: #333;
+	text-align: justify;
+}
+
+.sidebar-control-group {
+	position: relative;
+	display: block;
+    padding-top: 20px;
+}
+
+/* Insert radio style here */
+
+.sidebar-control-group-text {
+	position: relative;
+	display: block;
+	margin-left: 50px;
+	cursor: pointer;
+}
+
+.map {
+	height: 100%;
+}
+
+
+/* For desktop */
+.col-1 {width: 12.5%;}
+.col-2 {width: 25%;}
+.col-3 {width: 37.5%;}
+.col-4 {width: 50%;}
+.col-5 {width: 62.5%;}
+.col-6 {width: 75%;}
+.col-7 {width: 87.5%;}
+.col-8 {width: 100%;}
+
+
+
+@media only screen and (max-width: 860px) {
+	/* For mobile phones: */
+	[class*="col-"] {
+		width: 100%;
+	}
+/* ADD STYLING FOR MOBILE DEVICES	
+.header {
+	color: #ffffff;
+	padding: 0;
+	height: 180px;
+	overflow: hidden;
+	  overflow-x: hidden;
+	  overflow-y: hidden;
+	background-color: rgba(8,98,127,0.65);
+}
+
+*/	
+	
+}
+
+
+/* OLD STYLE SHEET -- DELETE WHEN UPDATED
+
 #body {
 	font: 15px/24px 'Ubuntu', sans-serif;
 }
@@ -42,10 +283,10 @@
 	top: 0px;
 	height: 180px;
 	width: 100%;
-	background: -webkit-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); /* Standard syntax */	
+	background: -webkit-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); 
+	background: -o-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); 
+	background: -moz-linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); 
+	background: linear-gradient(rgba(8,98,127,0.65), rgba(8,98,127,0)); 	
 }
 
 .site-title {
@@ -143,12 +384,13 @@ li a:hover {
 }
 
 #sidebar {
-	position: absolute;
+	position: relative;
 	display: block;
 	top: 180px;
-	bottom: 0px;
+	padding-bottom: 0px;
 	width: 350px;
 	background-color: F2F2F2;
+	overflow: scroll;
 }
 
 .sidebar-title-block {
@@ -175,8 +417,8 @@ li a:hover {
 .sidebar-text-block {
 	position: relative;
 	display: block;
-	top: 375px;
-	height: 0;
+	top: 75px;
+    bottom: 0;
 }
 
 .sidebar-text {
@@ -190,28 +432,23 @@ li a:hover {
 	text-align: justify;
 }
 
-#control-group {
-	position: absolute;
+.sidebar-control-group {
+	position: relative;
 	display: block;
-	top: 300px;
 	width: 350px;
-	height: 320px;
+    padding-top: 20px;
 }
 
-/* Insert radio style here */
 
-.control-group-text {
-	position: absolute;
+
+.sidebar-control-group-text {
+	position: relative;
 	display: block;
-	top: 50px;
 	margin-left: 50px;
 	cursor: pointer;
 }
 
 
-
-
-
-
+*/
 
 
