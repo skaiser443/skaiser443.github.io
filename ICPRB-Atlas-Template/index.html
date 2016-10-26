@@ -13,64 +13,63 @@
 <body>
 <!--DO NOT CHANGE ANYTHING IN THIS FIRST SECTION OF HTML BODY-->
 
-  <div class="container">
-    <div class="site-header" role="banner">
-	  <img class="banner-image" alt="Great Falls" src="cumminsGreat_Falls_p4a-Large.jpg">
-	</div>
-    <div class="overlay">
-	  <h1 class="site-title">The Potomac River Basin Atlas</h1>
-	</div>
-	<div class="navbar">
-	  <ul>
-	    <li><a href="https://www.potomacriver.org/about-us/">About ICPRB</a></li>
-		<li><a href="https://www.potomacriver.org/resources/">Resources</a></li>
-		<li><a href="https://www.potomacriver.org/resources/maps/">Maps</a></li>
-	  </ul>	
-	</div>
-	<div class="social">
-	  <div class="social-text">Interstate Commission on the Potomac River Basin</div>
-	  	<a href="https://www.facebook.com/PotomacRiverCommission" target="_blank"><img class="social-fb" alt="Facebook" src="elements/icons/facebook.png" width="15px" height="20px"></a>
-		<a href="https://www.linkedin.com/company-beta/8603011?pathWildcard=8603011" target="_blank"><img class="social-linkedin" alt="LinkedIn" src="elements/icons/linkedin.png" width="20px" height="20px"></a>
-		<a href="https://twitter.com/ICPRB" target="_blank"><img class="social-twitter" alt="Twitter" src="elements/icons/twitter.png" width="15px" height="15px"></a>
-		<a href="https://www.instagram.com/icprb/" target="_blank"><img class="social-insta" alt="Instagram" src="elements/icons/instagram.png" width="20px" height="20px"></a>
-	</div>
+<!-- HEADER FOR DESKTOP -->
+  <div class="header"> 
+      <img alt="Great Falls" src="elements/cumminsGreat_Falls_p4a-Large.jpg">
+	  <div class="header-overlay">
+	      <h1 class="site-title">Potomac River Basin Atlas</h1>
+      </div>
+      <img class="logo" alt="ICPRB Logo" src="elements/logo.png" width="" height="">
+      <div class="navigation">
+	      <ul>
+		    <li><a href="https://www.potomacriver.org/about-us/">About ICPRB</a></li>
+			<li><a href="https://www.potomacriver.org/resources/">Resources</a></li>
+			<li><a href="https://www.potomacriver.org/resources/maps/">Maps</a></li>
+		  </ul>
+	  </div>
+	  <div class="social">
+	      <div class="social-text">Interstate Commission on the Potomac River Basin</div>
+	  	  <a href="https://www.facebook.com/PotomacRiverCommission" target="_blank"><img class="social-fb" alt="Facebook" src="elements/icons/facebook.png" width="15px" height="20px"></a>
+		  <a href="https://www.linkedin.com/company-beta/8603011?pathWildcard=8603011" target="_blank"><img class="social-linkedin" alt="LinkedIn" src="elements/icons/linkedin.png" width="20px" height="20px"></a>
+		  <a href="https://twitter.com/ICPRB" target="_blank"><img class="social-twitter" alt="Twitter" src="elements/icons/twitter.png" width="15px" height="15px"></a>
+		  <a href="https://www.instagram.com/icprb/" target="_blank"><img class="social-insta" alt="Instagram" src="elements/icons/instagram.png" width="20px" height="20px"></a>
+	  </div>
   </div>
+<!-- END HEADER FOR DESKTOP -->
+
+<!-- HEADER FOR MOBILE -->
+
+<!-- END HEADER FOR MOBILE -->
 
 <!--END FIRST SECTION OF HTML BODY-->
 
 <!--UPDATE ELEMENTS PER NOTES BELOW FOR EACH NEW MAP CREATED-->
   
-  <div id="sidebar">
-    <div class="sidebar-title-block">Map Title</div><!--Add title of map here-->
-	<div class="sidebar-title-text">Insert map description here</div><!--Add short description of map here. If no description, delete placeholder text-->
-	<div class="sidebar-text-block">
-	  <div class="sidebar-text">Insert additional descriptive text here.<!--Insert additional text, if necessary, here. If no additional text is required, delete placehoder text.--> <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br></br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>
-	</div>
-  </div>
-
-
+  <div class="row">
   
-  <div id="control-group">
-    <div class="control-group-text">
-      <input type="radio" name="layer" value="layer 1"> Layer 1<br>
-	  <input type="radio" name="layer" value="layer 2"> Layer 2<br>
-	  <input type="radio" name="layer" value="layer 3"> Layer 3<br>
-	  <input type="radio" name="layer" value="layer 4"> Layer 4<br>
-	  <input type="radio" name="layer" value="layer 5"> Layer 5<br>
-	</div>
-  </div>
-  
+  <div class="col-2 sidebar">
+      <div class="sidebar-title-block">Map Title</div><!--Add title of map here-->
+	  <div class="sidebar-title-text">Insert map description here</div>
+      <div class="sidebar-control-group">
+        <div class="sidebar-control-group-text">
+          <input type="radio" name="layer" value="layer 1"> Layer 1<br>
+	      <input type="radio" name="layer" value="layer 2"> Layer 2<br>
+	      <input type="radio" name="layer" value="layer 3"> Layer 3<br>
+	      <input type="radio" name="layer" value="layer 4"> Layer 4<br>
+	      <input type="radio" name="layer" value="layer 5"> Layer 5<br>
+	    </div>
+      </div>	  
+	  <div class="sidebar-text-block">
+	    <div class="sidebar-text">Insert additional descriptive text here.<!--Insert additional text, if necessary, here. If no additional text is required, delete placehoder text.--> <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.<br></br>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>	  
+      </div>
+  </div>	  
+
 <!--END SIDEBAR-->
-
-<!--DO NOT CHANGE ANYTHING BELOW THIS NOTE-->
   
-  <div id="logo">
-    <img class="logo" alt="ICPRB Logo" src="logo.png" width="" height="">
+  <div id="map" class="col-6"></div>
+  
   </div>
- 
-  
-  <div id="map"></div>
-  
+
   <script src= 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.1/mapbox-gl-geocoder.js'></script>  
   <script src= 'script.js'></script>
   
