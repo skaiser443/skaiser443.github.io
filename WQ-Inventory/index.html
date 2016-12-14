@@ -1,0 +1,93 @@
+<html>
+<header>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta charset=utf-8 />
+  <title>Water Quality Monitoring Atlas</title>
+  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.1/mapbox-gl-geocoder.css' type='text/css' />
+  <link rel="stylesheet" href="style.css"/>
+</header>
+
+<body>
+<!--DO NOT CHANGE ANYTHING IN THIS FIRST SECTION OF HTML BODY-->
+
+<!-- HEADER FOR DESKTOP -->
+  <div class="header"> 
+      <img alt="Great Falls" src="elements/cumminsGreat_Falls_p4a-Large.jpg">
+	  <div class="header-overlay">
+	      <h1 class="site-title">Potomac River Basin Atlas</h1>
+      </div>
+      <img class="logo" alt="ICPRB Logo" src="elements/logo.png" width="" height="">
+      <div class="navigation">
+	      <ul>
+		    <li><a href="https://www.potomacriver.org/about-us/">About ICPRB</a></li>
+			<li><a href="https://www.potomacriver.org/resources/">Resources</a></li>
+			<li><a href="https://www.potomacriver.org/resources/maps/">Maps</a></li>
+		  </ul>
+	  </div>
+	  <div class="social">
+	      <div class="social-text">Interstate Commission on the Potomac River Basin</div>
+	  	  <a href="https://www.facebook.com/PotomacRiverCommission" target="_blank"><img class="social-fb" alt="Facebook" src="elements/icons/facebook.png" width="15px" height="20px"></a>
+		  <a href="https://www.linkedin.com/company-beta/8603011?pathWildcard=8603011" target="_blank"><img class="social-linkedin" alt="LinkedIn" src="elements/icons/linkedin.png" width="20px" height="20px"></a>
+		  <a href="https://twitter.com/ICPRB" target="_blank"><img class="social-twitter" alt="Twitter" src="elements/icons/twitter.png" width="15px" height="15px"></a>
+		  <a href="https://www.instagram.com/icprb/" target="_blank"><img class="social-insta" alt="Instagram" src="elements/icons/instagram.png" width="20px" height="20px"></a>
+	  </div>
+  </div>
+<!-- END HEADER FOR DESKTOP -->
+
+<!-- HEADER FOR MOBILE -->
+
+<!-- END HEADER FOR MOBILE -->
+
+<!--END FIRST SECTION OF HTML BODY-->
+
+<!--UPDATE ELEMENTS PER NOTES BELOW FOR EACH NEW MAP CREATED-->
+  
+  <div class="row">
+  
+  <div id="sidebar">
+      <div class="col-2 sidebar">
+	    <ul class="tab">
+		  <li><a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'Info')" id='info-tab'>Info</a></li>
+		  <li><a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'Agency')" id='agency-tab'>Agency/Organization</a></li>
+		  <li><a href='javascript:void(0)' class='tablinks' onclick="openTab(event, 'Subregion')" id='subregion-tab'>Watershed</a></li>
+		</ul>
+		<div id='Info' class='sidebar-text'>
+		  <p>Welcome to the Potomac River basin Water Quality Monitoring Inventory!<br></br>
+		  Water quality managers, researchers, and decision-makers depend on available water quality data, but it can be a challenge just to find the data collected for a specific waterway. To this end, ICPRB staff members produced an inventory of available water quality data sources in the Potomac River basin that includes information on watershed characteristics such as land use, zoning, elevation, and precipitation to help explain water quality patterns seen in the data.<br></br>
+		  To use this tool, click on the "Agency/Organization" or "Watershed" tabs above to filter water quality monitoring locations by agency/organization responsible for maintaining each location, sub-watershed, or both.<br></br>
+		  The following products have been developed as part of this effort:<br>
+		  <ol type="1" class="sidebar-text">
+		    <li>1. Project Report - provides a summary of the inventory, a description of data sources and how to obtain data, an identification of gaps in the inventory, and a discussion of next steps.<br></br></li>
+			<li>2. Mapping Interface - available to assist users in identifying monitoring locations of interest. The map displays water quality data monitoring locations that are currently included in the inventory. A pop-up window appears for each location by clicking on the monitoring point. The pop-up window includes key information about the monitoring effort including either contact information or a web link to access the data.<br></br></li>
+			<li>3. Water Quality Inventory Dataset - users can download the datasheet to obtain more information about the data sources without downloading the data. Monitoring locations on the map are linked to the spreadsheet inventory via the Source_No field.<br></br></li>
+		  </ol>
+		  Contact <a href='mailto:skaiser@icprb.org'>Scott Kaiser</a> with questions or to submit additional water quality data sources for inclusion in the inventory.
+		  </p>
+		</div>
+		<div id='Agency' class='sidebar-text hidden'>
+          <div class='checkbox-pill input' id='agencies'></div>
+		</div>
+		<div id='Subregion' class='sidebar-text hidden'>
+          <div class='checkbox-pill input' id='subregions'></div>
+		</div>
+	  </div>	
+    </div>	  
+
+<!--END SIDEBAR-->
+  
+  <div id="map" class="col-6"></div>
+  
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.9.0/lodash.min.js"></script>
+  <script src= 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.1/mapbox-gl-geocoder.js'></script>  
+  <script src= 'script.js'></script>
+  
+
+
+</body>
+
+</html>
