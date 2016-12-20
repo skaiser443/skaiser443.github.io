@@ -4,10 +4,10 @@
   <meta charset=utf-8 />
   <title>Water Quality Monitoring Atlas</title>
   <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
-  <script src='https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
-  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.1/mapbox-gl-geocoder.css' type='text/css' />
-  <link rel="stylesheet" href="style.css"/>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.css' rel='stylesheet' />
+  <link href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.css' rel='stylesheet' type='text/css' />
+  <link rel='stylesheet' href='style.css'/> 
 </header>
 
 <body>
@@ -56,19 +56,24 @@
 		</ul>
 		<div id='Info' class='sidebar-text'>
 		  <p>Welcome to the Potomac River basin Water Quality Monitoring Inventory!<br></br>
-		  Water quality managers, researchers, and decision-makers depend on available water quality data, but it can be a challenge just to find the data collected for a specific waterway. To this end, ICPRB staff members produced an inventory of available water quality data sources in the Potomac River basin that includes information on watershed characteristics such as land use, zoning, elevation, and precipitation to help explain water quality patterns seen in the data.<br></br>
-		  To use this tool, click on the "Agency/Organization" or "Watershed" tabs above to filter water quality monitoring locations by agency/organization responsible for maintaining each location, sub-watershed, or both.<br></br>
-		  The following products have been developed as part of this effort:<br>
-		  <ol type="1" class="sidebar-text">
-		    <li>1. Project Report - provides a summary of the inventory, a description of data sources and how to obtain data, an identification of gaps in the inventory, and a discussion of next steps.<br></br></li>
-			<li>2. Mapping Interface - available to assist users in identifying monitoring locations of interest. The map displays water quality data monitoring locations that are currently included in the inventory. A pop-up window appears for each location by clicking on the monitoring point. The pop-up window includes key information about the monitoring effort including either contact information or a web link to access the data.<br></br></li>
-			<li>3. Water Quality Inventory Dataset - users can download the datasheet to obtain more information about the data sources without downloading the data. Monitoring locations on the map are linked to the spreadsheet inventory via the Source_No field.<br></br></li>
-		  </ol>
-		  Contact <a href='mailto:skaiser@icprb.org'>Scott Kaiser</a> with questions or to submit additional water quality data sources for inclusion in the inventory.
+		  This mapping interface is available to assist users in identifying monitoring locations of interest. The map displays water quality data monitoring locations that are currently included in the inventory.
+		  To use this tool, click on the "Agency/Organization" or "Watershed" tabs above to filter water quality monitoring locations by agency/organization, sub-watershed, or both. 
+		  To view information about each monitoring location, click on the point of interest to open a pop-up window. The pop-up window includes key information about the agency/organization responsible for maintaining the 
+		  monitoring location, a link to the monitoring program website, and a link to access monitoring data for that location. Use the search function in the top-right to search for a specific street address in the basin.<br></br>
+		  
+		  To access the full water quality inventory dataset, users can download the datasheet <a href='https://www.potomacriver.org/focus-areas/water-quality/potomac-basin-water-quality-data-inventory/' target='_blank'>here</a>. The datasheet includes additional information about monitoring sites displayed in the mapping interface. Monitoring locations
+		  on the map are linked to the spreadsheet inventory via the Source_No field.<br></br>
+		  
+		  Efforts are made by ICPRB to keep this information up-to-date. As water quality data collection efforts in the basin are extensive, however, the information provided here is for informational purposes only and is not 
+		  guaranteed to be complete or appropriate for any particular use.<br></br>
+		  
+		  Visit the <a href='https://www.potomacriver.org/focus-areas/water-quality/potomac-basin-water-quality-data-inventory/'>project page</a> to learn more about the Water Quality Monitoring Inventory Project.<br></br>
+		  
+		  Contact <a href='mailto:hmoltz@icprb.org'>Dr. Heidi Moltz</a> with questions or to submit additional water quality data sources for inclusion in the inventory.
 		  </p>
 		</div>
 		<div id='Agency' class='sidebar-text hidden'>
-          <div class='checkbox-pill input' id='agencies'></div>
+		  <div class='checkbox-pill input' id='agencies'></div>
 		</div>
 		<div id='Subregion' class='sidebar-text hidden'>
           <div class='checkbox-pill input' id='subregions'></div>
@@ -81,11 +86,11 @@
   <div id="map" class="col-6"></div>
   
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.9.0/lodash.min.js"></script>
-  <script src= 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.3.1/mapbox-gl-geocoder.js'></script>  
-  <script src= 'script.js'></script>
   
+  
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.9.0/lodash.min.js"></script>
+  <script src= 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.0.1/mapbox-gl-geocoder.js'></script>
+  <script src= 'script.js'></script>
 
 
 </body>
