@@ -190,6 +190,18 @@ li a:hover {
     padding-top: 20px;
 }
 
+ol a {
+	list-style-type: number;
+	position: relative;
+	display: block;
+	padding: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font: 14px/18px 'Ubuntu', sans-serif;
+	color: #333;
+	text-align: justify;	
+}
+
 /* Insert radio style here */
 
 .sidebar-control-group-text {

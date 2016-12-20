@@ -115,7 +115,7 @@ function openTab(evt, tabName) {
 
 // ***ADD TOOLTIP*** //
 	
-var station_template_string = "<% { %><p><strong>Monitoring Station</strong></p><% } %><% if (station.Agency) { %><p><strong>Agency: </strong><%= station.Agency %></p><% } %><% if (station.Station_id) {%><p><strong>Station ID: </strong><%= station.Station_id %></p><% } %>";
+var station_template_string = "<% if (station.Source_No) { %><p><strong>Monitoring Station - <%= station.Source_No %></strong></p><% } %><% if (station.Source) { %><p><strong>Agency: </strong><%= station.Source %></p><% } %><% if (station.HUC_NAME) {%><p><strong>Watershed: </strong><%= station.HUC_NAME %></p><% } %><% if (station.Purpose) {%><p><strong>Purpose: </strong><%= station.Purpose %></p><% } %><% if (station.Contact_Na) { %><p><strong>Contact: </strong><%= station.Contact_Na %></p><% } %><% if (station.Program_we) { %><p><strong>Website: </strong><a href = <%= station.Program_we %> target = _blank >Click Here</a></p><% } %><% if (station.URL) { %><p><strong>Data Link: </strong><a href = <%= station.URL %> target = _blank >Click Here</a></p><% }%>";
 var station_template = _.template(station_template_string, {variable: 'station'});
 
 // ***SET EVENT LISTENERS ON CHECKBOXES TO FILTER DATA*** //
@@ -177,6 +177,9 @@ var inputs = document.querySelectorAll("input." + type);
   });
 
 	
-map.addControl(new mapboxgl.Geocoder({position: 'top-right'}));
-map.addControl(new mapboxgl.Navigation({position: 'top-left'}));
-
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'top-left');
+map.addControl(new MapboxGeocoder({
+	accessToken: mapboxgl.accessToken,
+	position: 'top-right'
+	}));
